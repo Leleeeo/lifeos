@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { Sidebar } from '@/components/sidebar'
 
-export default async function RootLayout({
+export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode
@@ -15,12 +15,10 @@ export default async function RootLayout({
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#0a0e27]">
       <Sidebar />
-      <main className="md:pl-64">
-        <div className="p-6">
-          {children}
-        </div>
+      <main className="md:ml-[84px] p-4 md:p-6">
+        {children}
       </main>
     </div>
   )

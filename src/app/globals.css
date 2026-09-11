@@ -39,6 +39,8 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-cyan: #06d6a0;
+  --color-teal: #00b4d8;
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -49,72 +51,72 @@
 }
 
 :root {
-  --background: oklch(0.985 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.546 0.245 262.881);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.965 0.01 250);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.965 0.01 250);
-  --muted-foreground: oklch(0.5 0 0);
-  --accent: oklch(0.965 0.01 250);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.92 0.01 250);
-  --input: oklch(0.92 0.01 250);
-  --ring: oklch(0.546 0.245 262.881);
-  --chart-1: oklch(0.546 0.245 262.881);
-  --chart-2: oklch(0.627 0.265 150);
-  --chart-3: oklch(0.645 0.246 16);
-  --chart-4: oklch(0.546 0.245 262.881);
-  --chart-5: oklch(0.627 0.265 220);
+  --background: #0a0e27;
+  --foreground: #e2e8f0;
+  --card: rgba(255, 255, 255, 0.03);
+  --card-foreground: #e2e8f0;
+  --popover: #111638;
+  --popover-foreground: #e2e8f0;
+  --primary: #06d6a0;
+  --primary-foreground: #0a0e27;
+  --secondary: rgba(255, 255, 255, 0.06);
+  --secondary-foreground: #e2e8f0;
+  --muted: rgba(255, 255, 255, 0.06);
+  --muted-foreground: #64748b;
+  --accent: rgba(6, 214, 160, 0.1);
+  --accent-foreground: #06d6a0;
+  --destructive: #ef4444;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #06d6a0;
+  --chart-1: #06d6a0;
+  --chart-2: #00b4d8;
+  --chart-3: #7c3aed;
+  --chart-4: #f59e0b;
+  --chart-5: #ec4899;
   --radius: 0.75rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.546 0.245 262.881);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.965 0.01 250);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.92 0.01 250);
-  --sidebar-ring: oklch(0.546 0.245 262.881);
+  --sidebar: #0d1230;
+  --sidebar-foreground: #94a3b8;
+  --sidebar-primary: #06d6a0;
+  --sidebar-primary-foreground: #0a0e27;
+  --sidebar-accent: rgba(6, 214, 160, 0.1);
+  --sidebar-accent-foreground: #06d6a0;
+  --sidebar-border: rgba(255, 255, 255, 0.06);
+  --sidebar-ring: #06d6a0;
 }
 
 .dark {
-  --background: oklch(0.1 0.005 260);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.15 0.005 260);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.15 0.005 260);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.546 0.245 262.881);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.2 0.01 260);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.2 0.01 260);
-  --muted-foreground: oklch(0.65 0 0);
-  --accent: oklch(0.2 0.01 260);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(0.25 0.01 260);
-  --input: oklch(0.25 0.01 260);
-  --ring: oklch(0.546 0.245 262.881);
-  --chart-1: oklch(0.546 0.245 262.881);
-  --chart-2: oklch(0.627 0.265 150);
-  --chart-3: oklch(0.645 0.246 16);
-  --chart-4: oklch(0.546 0.245 262.881);
-  --chart-5: oklch(0.627 0.265 220);
-  --sidebar: oklch(0.12 0.005 260);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.546 0.245 262.881);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.2 0.01 260);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.25 0.01 260);
-  --sidebar-ring: oklch(0.546 0.245 262.881);
+  --background: #0a0e27;
+  --foreground: #e2e8f0;
+  --card: rgba(255, 255, 255, 0.03);
+  --card-foreground: #e2e8f0;
+  --popover: #111638;
+  --popover-foreground: #e2e8f0;
+  --primary: #06d6a0;
+  --primary-foreground: #0a0e27;
+  --secondary: rgba(255, 255, 255, 0.06);
+  --secondary-foreground: #e2e8f0;
+  --muted: rgba(255, 255, 255, 0.06);
+  --muted-foreground: #64748b;
+  --accent: rgba(6, 214, 160, 0.1);
+  --accent-foreground: #06d6a0;
+  --destructive: #ef4444;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #06d6a0;
+  --chart-1: #06d6a0;
+  --chart-2: #00b4d8;
+  --chart-3: #7c3aed;
+  --chart-4: #f59e0b;
+  --chart-5: #ec4899;
+  --sidebar: #0d1230;
+  --sidebar-foreground: #94a3b8;
+  --sidebar-primary: #06d6a0;
+  --sidebar-primary-foreground: #0a0e27;
+  --sidebar-accent: rgba(6, 214, 160, 0.1);
+  --sidebar-accent-foreground: #06d6a0;
+  --sidebar-border: rgba(255, 255, 255, 0.06);
+  --sidebar-ring: #06d6a0;
 }
 
 @layer base {
@@ -122,9 +124,65 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply antialiased;
+    background: #0a0e27;
+    color: #e2e8f0;
   }
   html {
     @apply font-sans scroll-smooth;
+    background: #0a0e27;
   }
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+}
+
+.glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(6, 214, 160, 0.2);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #06d6a0, #00b4d8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #06d6a0, #00b4d8);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+.glow-cyan {
+  box-shadow: 0 0 30px rgba(6, 214, 160, 0.15);
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: rgba(6, 214, 160, 0.3);
+  box-shadow: 0 0 20px rgba(6, 214, 160, 0.1);
 }

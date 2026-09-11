@@ -13,8 +13,15 @@ import {
   FileText,
   Upload,
   Settings,
+  LogOut,
 } from 'lucide-react'
 import { ThemeToggle } from '@/components/theme-toggle'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
 
 const navigation = [
   { name: 'Dashboard', href: '/', icon: LayoutDashboard },
@@ -25,61 +32,53 @@ const navigation = [
   { name: 'Investimentos', href: '/investments', icon: TrendingUp },
   { name: 'Relatórios', href: '/reports', icon: FileText },
   { name: 'Importar', href: '/import', icon: Upload },
-  { name: 'Configurações', href: '/settings', icon: Settings },
 ]
 
 export function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <aside className="hidden md:flex md:w-[260px] md:flex-col md:fixed md:inset-y-0 bg-card border-r border-border/50">
-      <div className="flex flex-col flex-1 min-h-0">
-        <div className="flex items-center h-16 flex-shrink-0 px-5 border-b border-border/50">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
-              <span className="text-primary-foreground font-bold text-lg">L</span>
-            </div>
-            <span className="text-xl font-bold tracking-tight">LifeOS</span>
+    <TooltipProvider>
+      <aside className="hidden md:flex md:w-[72px] md:flex-col md:fixed md:inset-y-0 items-center py-6 glass-card rounded-2xl m-3 gap-6 z-50">
+        <Link href="/" className="mb-4">
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #06d6a0, #00b4d8)' }}>
+            <span className="text-[#0a0e27] font-bold text-lg">L</span>
           </div>
-        </div>
-        <div className="flex-1 flex flex-col pt-4 pb-4 overflow-y-auto px-3">
-          <nav className="flex-1 space-y-1">
-            {navigation.map((item) => {
-              const isActive = pathname === item.href
-              return (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={cn(
-                    'group flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-xl transition-all duration-200',
-                    isActive
-                      ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20'
-                      : 'text-muted-foreground hover:bg-muted hover:text-foreground'
-                  )}
-                >
-                  <item.icon
+        </Link>
+
+        <nav className="flex-1 flex flex-col items-center gap-2 w-full px-2">
+          {navigation.map((item) => {
+            const isActive = pathname === item.href
+            return (
+              <Tooltip key={item.name} delayDuration={0}>
+                <TooltipTrigger asChild>
+                  <Link
+                    href={item.href}
                     className={cn(
-                      'h-5 w-5 flex-shrink-0 transition-colors',
-                      isActive ? 'text-primary-foreground' : 'text-muted-foreground group-hover:text-foreground'
+                      'w-11 h-11 flex items-center justify-center rounded-xl transition-all duration-200',
+                      isActive
+                        ? 'bg-[#06d6a0] text-[#0a0e27] shadow-lg shadow-[#06d6a0]/20'
+                        : 'text-[#64748b] hover:text-[#e2e8f0] hover:bg-white/5'
                     )}
-                  />
+                  >
+                    <item.icon className="h-5 w-5" />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent side="right" className="bg-[#111638] border-white/10 text-white">
                   {item.name}
-                </Link>
-              )
-            })}
-          </nav>
+                </TooltipContent>
+              </Tooltip>
+            )
+          })}
+        </nav>
+
+        <div className="flex flex-col items-center gap-3">
+          <ThemeToggle />
+          <a href="/auth/logout" className="w-11 h-11 flex items-center justify-center rounded-xl text-[#64748b] hover:text-[#ef4444] hover:bg-[#ef4444]/10 transition-all">
+            <LogOut className="h-5 w-5" />
+          </a>
         </div>
-        <div className="flex-shrink-0 border-t border-border/50 p-4">
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            <a href="/auth/logout" className="flex-1">
-              <button className="w-full text-left px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted rounded-xl transition-colors">
-                Sair da conta
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-    </aside>
+      </aside>
+    </TooltipProvider>
   )
 }
