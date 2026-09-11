@@ -105,19 +105,52 @@ export default function DashboardPage() {
 
           <div className="col-span-12 glass-card p-5">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="font-semibold">Evolução</h3>
+              <h3 className="font-semibold">Evolução Mensal</h3>
             </div>
-            <div className="h-[200px] flex items-end gap-2 px-2">
-              {[40, 65, 45, 80, 55, 90, 70, 85, 60, 95, 75, 88].map((h, i) => (
-                <div key={i} className="flex-1 flex flex-col items-center gap-2">
-                  <div className="w-full rounded-lg transition-all duration-500 hover:opacity-80" style={{ height: `${h}%`, background: i === 11 ? 'linear-gradient(180deg, #06d6a0, #00b4d8)' : 'rgba(6, 214, 160, 0.2)' }} />
-                </div>
-              ))}
-            </div>
-            <div className="flex justify-between mt-3 px-2 text-xs text-[#64748b]">
-              <span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span>
-              <span>Jul</span><span>Ago</span><span>Set</span><span>Out</span><span>Nov</span><span>Dez</span>
-            </div>
+            {(() => {
+              const months = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']
+              const now = new Date()
+              const monthlyData = months.map((_, i) => {
+                const monthTransactions = transactions.filter(t => {
+                  const d = new Date(t.date)
+                  return d.getMonth() === i && d.getFullYear() === now.getFullYear()
+                })
+                const income = monthTransactions.filter(t => t.type === 'income').reduce((s, t) => s + t.amount, 0)
+                const expense = monthTransactions.filter(t => t.type === 'expense').reduce((s, t) => s + t.amount, 0)
+                return { income, expense, total: income + expense }
+              })
+              const maxVal = Math.max(...monthlyData.map(m => m.total), 1)
+              return (
+                <>
+                  <div className="h-[200px] flex items-end gap-2 px-2">
+                    {monthlyData.map((m, i) => {
+                      const h = maxVal > 0 ? (m.total / maxVal) * 100 : 0
+                      const isCurrentMonth = i === now.getMonth()
+                      return (
+                        <div key={i} className="flex-1 flex flex-col items-center gap-2">
+                          <div
+                            className="w-full rounded-lg transition-all duration-500 hover:opacity-80"
+                            style={{
+                              height: `${Math.max(h, 2)}%`,
+                              background: isCurrentMonth
+                                ? 'linear-gradient(180deg, #06d6a0, #00b4d8)'
+                                : m.total > 0
+                                  ? 'rgba(6, 214, 160, 0.3)'
+                                  : 'rgba(255, 255, 255, 0.05)',
+                            }}
+                          />
+                        </div>
+                      )
+                    })}
+                  </div>
+                  <div className="flex justify-between mt-3 px-2 text-xs text-[#64748b]">
+                    {months.map((m, i) => (
+                      <span key={i} className={i === now.getMonth() ? 'text-[#06d6a0] font-medium' : ''}>{m}</span>
+                    ))}
+                  </div>
+                </>
+              )
+            })()}
           </div>
         </div>
 
